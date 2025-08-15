@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { RestrictMapBounds } from './Restrict.jsx'; // Adjust the import path as necessary
+import  RestrictMapBounds  from './Restrict.jsx'; // Adjust the import path as necessary
 
 export default function App() {
   return (

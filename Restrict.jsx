@@ -3,6 +3,8 @@ import {
   FillLayer,
   MapView,
   ShapeSource,
+  RasterSource,
+  RasterLayer,
 } from "@maplibre/maplibre-react-native";
 import bboxPolygon from "@turf/bbox-polygon";
 
@@ -22,10 +24,18 @@ const POLYGON = bboxPolygon([
   EU_BOUNDS.ne[1],
 ]);
 
+
 export function RestrictMapBounds() {
   return (
     <MapView style={{ flex: 1 }}>
       <Camera maxBounds={EU_BOUNDS} bounds={EU_BOUNDS} />
+      <RasterSource
+        id="maptiler"
+        tileUrlTemplates={["https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=9sIRFJ766pISx8pvoqRd"]}
+        tileSize={256}
+      >
+        <RasterLayer id="maptiler-layer" sourceID="maptiler" />
+      </RasterSource>
       <ShapeSource id="bounds-source" shape={POLYGON}>
         <FillLayer
           id="bounds-fill"
